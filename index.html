@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Павло Вугельман</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+body{margin:0;font-family:Arial,sans-serif;color:#1f2933;line-height:1.6;}
+nav{position:fixed;top:0;width:100%;background:#0f172a;padding:10px;text-align:right;z-index:1000}
+nav a{color:#fff;margin:0 15px;text-decoration:none;font-weight:bold}
+header{background:url("images/hero.jpg") center/cover no-repeat;height:100vh;display:flex;align-items:center;color:#fff}
+.header-content{background:rgba(0,0,0,.55);padding:40px;max-width:600px}
+section{max-width:1000px;margin:auto;padding:40px 20px}
+h1{font-size:42px}
+h2{margin-top:60px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.grid img{width:100%;border-radius:8px}
+
+/* Scroll animation */
+.reveal{opacity:0;transform:translateY(40px);transition:.8s}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+/* Dark mode */
+body.dark{background:#0b1120;color:#e5e7eb}
+body.dark nav,body.dark footer{background:#020617}
+.toggle-theme{
+  position:fixed;
+  top:14px;
+  left:20px;
+  background:#111827;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  z-index:1000
+}
+
+/* Floating buttons */
+.floating-social{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:999
+}
+.floating-social a{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:22px;
+  text-decoration:none;
+  box-shadow:0 6px 18px rgba(0,0,0,.25)
+}
+.fb{background:#1877f2}
+.ig{background:#e1306c}
+.mail{background:#0f172a}
+
+footer{
+  background:#0f172a;
+  color:#fff;
+  text-align:center;
+  padding:20px
+}
+</style>
+</head>
+
+<body>
+
+<div class="toggle-theme" onclick="toggleTheme()">🌙 Dark</div>
+
+<nav>
+  <a href="#about">Про мене</a>
+  <a href="#activity">Діяльність</a>
+  <a href="#gallery">Галерея</a>
+  <a href="#contact">Контакти</a>
+  <a href="en.html">EN</a>
+</nav>
+
+<header>
+  <div class="header-content">
+    <h1>Павло Вугельман</h1>
+    <p>
+      Громадський діяч · управлінець · міжнародна співпраця<br>
+      Одеса, Україна
+    </p>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <h2>Про мене</h2>
+  <p>
+    Павло Вугельман — український управлінець та громадський діяч.
+    Народився 29 березня 1983 року в Одесі.
+  </p>
+  <p>
+    Має вищу економічну та юридичну освіту. Працював у банківському секторі
+    та органах місцевого самоврядування.
+  </p>
+</section>
+
+<section id="activity" class="reveal">
+  <h2>Напрями діяльності</h2>
+  <ul>
+    <li>🏛 Публічне управління</li>
+    <li>🌍 Міжнародна співпраця</li>
+    <li>🤝 Бізнес-комунікації</li>
+    <li>🎓 Освітні ініціативи</li>
+  </ul>
+</section>
+
+<section id="gallery" class="reveal">
+  <h2>Публічна діяльність</h2>
+  <div class="grid">
+    <img src="images/speech.jpg" alt="">
+    <img src="images/meeting.jpg" alt="">
+    <img src="images/group.jpg" alt="">
+    <img src="images/international.jpg" alt="">
+    <img src="images/sport.jpg" alt="">
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <h2>Контакти</h2>
+  <p>
+    📍 Одеса, Україна<br>
+    ✉️ <a href="mailto:7791322@gmail.com">7791322@gmail.com</a>
+  </p>
+</section>
+
+<div class="floating-social">
+  <a href="https://www.facebook.com/share/14YQhCqcGLd/?mibextid=wwXIfr"
+     target="_blank" class="fb" title="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a href="https://www.instagram.com/vugelmanpavel?igsh=bGtrMmZkZTdpcGI0"
+     target="_blank" class="ig" title="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="mailto:7791322@gmail.com"
+     class="mail" title="Написати">
+    <i class="fa-solid fa-envelope"></i>
+  </a>
+</div>
+
+<footer>
+  © 2026 Павло Вугельман
+</footer>
+
+<script>
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-100){
+      el.classList.add("active")
+    }
+  })
+});
+
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+
+if(localStorage.getItem("theme")==="dark"){
+  document.body.classList.add("dark");
+}
+</script>
+
+</body>
+</html>
